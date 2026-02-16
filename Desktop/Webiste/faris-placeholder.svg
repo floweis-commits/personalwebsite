@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="780" viewBox="0 0 650 780">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f40c3f" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#160000" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <!-- Head -->
+  <ellipse cx="325" cy="220" rx="120" ry="150" fill="url(#g)" stroke="#f40c3f" stroke-width="2" stroke-dasharray="8 4"/>
+  <!-- Hat brim -->
+  <ellipse cx="325" cy="120" rx="160" ry="30" fill="none" stroke="#f40c3f" stroke-width="2" stroke-dasharray="8 4"/>
+  <!-- Hat top -->
+  <path d="M 200 120 Q 210 30 325 20 Q 440 30 450 120" fill="none" stroke="#f40c3f" stroke-width="2" stroke-dasharray="8 4"/>
+  <!-- Shoulders -->
+  <path d="M 180 370 Q 180 320 220 300 Q 270 380 325 380 Q 380 380 430 300 Q 470 320 470 370 L 520 450 Q 540 520 540 600 L 540 780 L 110 780 L 110 600 Q 110 520 130 450 Z" fill="url(#g)" stroke="#f40c3f" stroke-width="2" stroke-dasharray="8 4"/>
+  <!-- Label -->
+  <text x="325" y="550" font-family="Impact,sans-serif" font-size="28" fill="#f40c3f" text-anchor="middle" opacity="0.6">DROP ILLUSTRATION HERE</text>
+  <text x="325" y="585" font-family="monospace" font-size="14" fill="#f40c3f" text-anchor="middle" opacity="0.4">transparent PNG · ~650x780px</text>
+</svg>
