@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life — Faris Oweis</title>
+  <meta name="description" content="The story of Faris Oweis — from bootlegger to GTM strategist for crypto's industrial economy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #f40c3f;
+      --primary-dark: #c70a33;
+      --dark: #160000;
+      --dark-mid: #2a0a0a;
+      --cream: #fff0eb;
+      --cream-dim: #f5e6e0;
+      --mono: 'Space Mono', monospace;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+      --head-h: 5rem;
+    }
+
+    html {
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) var(--cream);
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Border frame — thin black */
+    .site-border {
+      position: fixed; inset: 0;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    .site-border__edge { position: absolute; background: var(--dark); }
+    .site-border__edge--top { top: 0; left: 0; right: 0; height: 1px; }
+    .site-border__edge--bottom { bottom: 0; left: 0; right: 0; height: 1px; }
+    .site-border__edge--left { top: 0; bottom: 0; left: 0; width: 1px; }
+    .site-border__edge--right { top: 0; bottom: 0; right: 0; width: 1px; }
+
+    /* ===== HEADER ===== */
+    .site-head {
+      position: fixed; top: 0; left: 1px; right: 1px;
+      z-index: 60;
+      height: var(--head-h);
+      display: flex; align-items: stretch;
+      background: var(--cream);
+      border-bottom: 1px solid var(--dark);
+    }
+
+    .head-logo {
+      width: var(--head-h); height: var(--head-h);
+      display: flex; align-items: center; justify-content: center;
+      border-right: 1px solid var(--dark);
+      font-family: var(--mono);
+      font-size: 20px; font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .head-logo:hover { background: var(--primary); color: var(--cream); }
+
+    .head-back {
+      display: flex; align-items: center;
+      padding: 0 24px;
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--dark);
+      border-right: 1px solid var(--dark);
+      transition: all 0.3s;
+      gap: 8px;
+      opacity: 0.5;
+    }
+
+    .head-back:hover { background: var(--primary); color: var(--cream); opacity: 1; }
+
+    .head-title {
+      flex: 1;
+      display: flex; align-items: center;
+      padding: 0 24px;
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .head-socials { display: flex; align-items: stretch; }
+
+    .head-socials a {
+      display: flex; align-items: center; justify-content: center;
+      width: var(--head-h);
+      font-family: var(--mono);
+      font-size: 10px;
+      text-decoration: none;
+      color: var(--dark);
+      border-left: 1px solid var(--dark);
+      transition: all 0.3s;
+      letter-spacing: 0.05em;
+    }
+
+    .head-socials a:hover { background: var(--dark); color: var(--cream); }
+
+    /* ===== MAIN CONTENT ===== */
+    .life-page {
+      padding: calc(var(--head-h) + 80px) 48px 120px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .life-page__container { max-width: 780px; margin: 0 auto; }
+
+    .life-page__label {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 64px;
+      display: flex; align-items: center; gap: 16px;
+      color: var(--primary);
+    }
+
+    .life-page__label::before {
+      content: ''; width: 32px; height: 1px;
+      background: var(--primary);
+    }
+
+    /* ===== CONVERSATIONAL CHAT UI ===== */
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      gap: 72px;
+    }
+
+    .chat-exchange {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Prompt */
+    .chat-prompt {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 24px;
+      background: rgba(244, 12, 63, 0.06);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+    }
+
+    .chat-prompt__icon {
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.65;
+      user-select: none;
+    }
+
+    .chat-prompt p {
+      font-family: var(--mono);
+      font-size: clamp(12px, 1.3vw, 15px);
+      letter-spacing: 0.02em;
+      color: var(--dark);
+      line-height: 1.65;
+      opacity: 0.55;
+    }
+
+    /* Thinking dots */
+    .chat-thinking {
+      display: flex;
+      gap: 5px;
+      padding: 12px 0 12px 42px;
+      height: 36px;
+      opacity: 0;
+    }
+
+    .chat-thinking span {
+      width: 7px;
+      height: 7px;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.35;
+    }
+
+    .chat-thinking.is-animating span {
+      animation: thinkPulse 1.4s ease-in-out infinite;
+    }
+
+    .chat-thinking.is-animating span:nth-child(2) { animation-delay: 0.2s; }
+    .chat-thinking.is-animating span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes thinkPulse {
+      0%, 80%, 100% { transform: scale(0.7); opacity: 0.3; }
+      40% { transform: scale(1.15); opacity: 1; }
+    }
+
+    /* Response */
+    .chat-response {
+      padding-left: 42px;
+    }
+
+    .chat-response p {
+      font-family: var(--mono);
+      font-size: clamp(12px, 1.3vw, 15px);
+      line-height: 1.65;
+      letter-spacing: 0.02em;
+      color: var(--dark);
+      font-weight: 400;
+    }
+
+    .chat-response p + p { margin-top: 20px; }
+
+    .chat-response__label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    /* Continuation response */
+    .chat-response-cont {
+      padding-left: 42px;
+      margin-top: 8px;
+    }
+
+    .chat-response-cont p {
+      font-family: var(--mono);
+      font-size: clamp(12px, 1.3vw, 15px);
+      line-height: 1.65;
+      letter-spacing: 0.02em;
+      color: var(--dark);
+      font-weight: 400;
+    }
+
+    /* ===== SPLIT-FLAP (AIRPORT BOARD) ===== */
+    .split-flap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 36px 0 28px 42px;
+      padding: 24px;
+      background: var(--dark);
+      border: 1px solid var(--dark);
+      border-radius: 4px;
+    }
+
+    .flap-row {
+      display: flex;
+      gap: 3px;
+      align-items: center;
+    }
+
+    .flap-row__number {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--primary);
+      opacity: 0.4;
+      width: 24px;
+      text-align: right;
+      margin-right: 14px;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+    }
+
+    .flap-char {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.1ch;
+      height: 1.65em;
+      padding: 0 1px;
+      background: var(--dark-mid);
+      color: var(--primary);
+      font-family: var(--mono);
+      font-size: clamp(14px, 1.6vw, 20px);
+      font-weight: 700;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0;
+    }
+
+    .flap-char::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      top: 50%;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+    }
+
+    .flap-char.is-space { background: transparent; min-width: 0.5ch; }
+    .flap-char.is-space::after { display: none; }
+
+    /* Personal specs */
+    .chat-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-left: 42px;
+      margin-top: 16px;
+    }
+
+    .spec-item {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(22, 0, 0, 0.08);
+    }
+
+    .spec-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .spec-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary);
+      flex-shrink: 0;
+      min-width: 130px;
+      font-weight: 700;
+    }
+
+    .spec-value {
+      font-family: var(--sans);
+      font-size: clamp(15px, 1.6vw, 18px);
+      color: var(--dark);
+      line-height: 1.55;
+      font-style: italic;
+      opacity: 0.65;
+    }
+
+    /* ===== INLINE IMAGE IN CHAT ===== */
+    .chat-response__image {
+      display: block;
+      max-width: 180px;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 50%;
+      border: 1px solid rgba(22, 0, 0, 0.1);
+    }
+
+    /* ===== RANCH INSTAGRAM GALLERY ===== */
+    .chat-gallery {
+      margin-top: 28px;
+      padding-left: 42px;
+    }
+
+    .chat-gallery__label {
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chat-gallery__label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(22, 0, 0, 0.1);
+    }
+
+    .chat-gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .chat-gallery__grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .chat-gallery__grid img:hover {
+      transform: scale(1.03);
+    }
+
+    .chat-gallery__follow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      opacity: 0.5;
+      transition: all 0.3s;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .chat-gallery__follow:hover {
+      opacity: 1;
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* Store link — clickable thumbnail card */
+    .chat-store-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+      padding: 14px 18px;
+      background: var(--cream-dim);
+      border: 1px solid rgba(22, 0, 0, 0.08);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--dark);
+      transition: all 0.3s;
+      max-width: 340px;
+    }
+
+    .chat-store-link:hover {
+      border-color: var(--primary);
+      box-shadow: 0 2px 12px rgba(244, 12, 63, 0.1);
+    }
+
+    .chat-store-link__logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .chat-store-link__logo--text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--dark);
+      color: var(--primary);
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .chat-store-link__text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .chat-store-link__text strong {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--dark);
+    }
+
+    .chat-store-link__text small {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      opacity: 0.7;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      :root { --head-h: 3.5rem; }
+      .life-page { padding: calc(var(--head-h) + 48px) 24px 80px; }
+      .head-title { display: none; }
+      .chat-container { gap: 56px; }
+      .chat-prompt { padding: 14px 18px; }
+      .chat-response, .chat-response-cont, .chat-specs, .chat-gallery { padding-left: 0; }
+      .chat-thinking { padding-left: 0; }
+      .split-flap { margin-left: 0; padding: 16px; }
+      .chat-gallery__grid { grid-template-columns: 1fr; }
+      .spec-item { flex-direction: column; gap: 6px; }
+      .spec-label { min-width: auto; }
+    }
+
+    /* ===== GRAIN ===== */
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      pointer-events: none; z-index: 99;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 512px;
+      mix-blend-mode: multiply;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Border Frame — thin black lines -->
+  <div class="site-border">
+    <div class="site-border__edge site-border__edge--top"></div>
+    <div class="site-border__edge site-border__edge--bottom"></div>
+    <div class="site-border__edge site-border__edge--left"></div>
+    <div class="site-border__edge site-border__edge--right"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-head">
+    <a href="index.html" class="head-logo">FO</a>
+    <a href="index.html" class="head-back">&larr; Back</a>
+    <div class="head-title">Life</div>
+    <div class="head-socials">
+      <a href="https://x.com/faris_says" target="_blank" rel="noopener">X</a>
+      <a href="https://www.linkedin.com/in/farisoweis/" target="_blank" rel="noopener">Li</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="life-page">
+    <div class="life-page__container">
+      <div class="life-page__label">Life</div>
+
+      <div class="chat-container" id="chatContainer">
+
+        <!-- Exchange 1: The Pitch — Ray Dalio scenario -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>Imagine Ray Dalio walks up to you. Phase 6 of the decline, everything&rsquo;s shifting, and he goes: &ldquo;We&rsquo;re all good. I&rsquo;m starting something new&mdash;but I need to know what you&rsquo;re really good at. Give me three things.&rdquo;</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>Okay, well&mdash;I&rsquo;m passionate about finding the easiest ways to create the most amount of transformation.</p>
+            <p>I&rsquo;m definitely bad-ass at creating opportunities that turn blue-sky thinking into plausible movement-making. Ask anybody.</p>
+            <p>And I build bridges. I facilitate the right people with the right process. That&rsquo;s the whole game.</p>
+            <p>Okay, I know you said three&mdash;but one more. I cut beneath the surface in a very pointed but gentle way, which makes it pretty easy to love me.</p>
+          </div>
+        </div>
+
+        <!-- Exchange 2: Ages 18–22 -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>If we randomly met in Italy and I wanted to hear about your life between the ages of 18&ndash;22 over an Aperol Spritz, what would you say?</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>This reminds me of the scene in the Goonies where Chunk, when he&rsquo;s being interrogated by the Fratelli gang, just concedes on all of his life&rsquo;s bad deeds. That&rsquo;s me right now.</p>
+            <p>I had a 1.3 GPA coming out of high school. The only school that accepted me was the University of Hartford. My uncle got me a meeting with the Dean at Virginia Tech and the guy looked me dead in the eye and said I had to get an A in Calculus to transfer. I still don&rsquo;t know why he picked Calculus of all things&mdash;but I didn&rsquo;t question it. I wanted out so badly that I got an A in Calculus after never getting an A in anything to that point in my life.</p>
+            <p>I transferred to Virginia Tech my sophomore year and immediately went right back to not trying. Got academically suspended one year later. The same Dean with the Calculus demand called my Dad to tell him personally. That was a fun dinner.</p>
+            <p>But I bounced back. Got focused. Got a degree. And honestly, that whole stretch&mdash;Hartford to Blacksburg to suspension to finishing&mdash;is probably the thing that taught me the most about what I&rsquo;m actually made of.</p>
+          </div>
+        </div>
+
+        <!-- Exchange 3: The Jobs — going even further back -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>Okay wow, let&rsquo;s go even further back. What were you doing before all of that?</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>Sure thing. As a kid, I had what seems like 20 jobs before I even graduated from Virginia Tech. I was a retail associate at Sears, the register person at Dairy Queen, a busboy at a pub, a reseller of illegally purchased beer with markup, a night shift employee at Subway, a camp counselor for 2nd graders, a landscaper for the town of Blacksburg, Virginia, a baker at Texas Roadhouse, a professional survey taker, pit boss for an illegal gambling operation, and&mdash;not sure what to call it&mdash;the person who puts forks in a box for dining sets sold at department stores.</p>
+          </div>
+        </div>
+
+        <!-- Exchange 4: The Flaws -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>What did you tell your wife your biggest flaws were before you got married, just so she was aware before the big I do?</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>IKEA furniture scares me. I was extremely cheap until the age of 33. And I cheated on my driving exam, which is why sometimes I go through red lights even until this day, and struggle in terms of depth perception when the GPS is telling me to make a turn in 200 feet.</p>
+          </div>
+        </div>
+
+        <!-- Exchange 5: The Compliment -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>What&rsquo;s the biggest compliment you&rsquo;ve ever received?</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>&ldquo;You&rsquo;ve never met a stranger.&rdquo; &mdash; my wife.</p>
+          </div>
+        </div>
+
+        <!-- Exchange 6: Ted Lasso -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>What TV character do you wish was a real person?</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>Ted Lasso. I loved him so much that I invoked his energy to the point where people called me the Ted Lasso of crypto, and I created an entire brand around it for my previous agency.</p>
+          </div>
+        </div>
+
+        <!-- Exchange 7: The Doppelgänger -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>Who would you say your doppelg&auml;nger is?</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>In my early 20s, I got a lot of Ben Affleck. In my late 20s, I got a lot of Ben Stiller. In my 30s, and to this day, I get a lot of Oscar Isaac. On occasion, I get Mohamed Salah of Arsenal, which I resent as we are Aston Villa fans.</p>
+          </div>
+        </div>
+
+        <!-- Exchange 8: The Industries -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>How many industries have you touched in your career?</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>Excluding everything I did before the age of 20, to avoid this being a novel: civil engineering at CH2M, now Jacobs, defense and national security for a State Department contractor, online advertising at Yahoo, financial advisor&mdash;even got a Series 7 and 63&mdash;and just in crypto alone: data management, compute, NFTs, all of DeFi including money markets, options, perps, lending, and prediction markets, Layer 1 infrastructure, Layer 2 infrastructure, middleware, oracles, payments, privacy, and a graveyard of consumer apps.</p>
+          </div>
+        </div>
+
+        <!-- Exchange 9: Yahoo & CH2M -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>Interesting, tell me more about Yahoo and CH2M.</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>Yahoo was my first real career. HotJobs, selling to recruiters across the country. I had a boss who inspired us every day&mdash;the kind of leader who made you perform beyond your own skill level. That&rsquo;s where I learned that doing little things consistently matters just as much as doing something big once. I wanted to make more money and working the same geographies wasn&rsquo;t going to cut it, so like an NFL GM I started trading. I swapped most of my area codes in major metros&mdash;New York, Chicago&mdash;for a larger volume in secondary markets like Milwaukee and Providence. Doubled my earnings the next quarter. I was also so bad administratively that my boss had to do my paperwork just so he wouldn&rsquo;t look bad.</p>
+            <p>CH2M was mega-infrastructure across the Middle East. I positioned, bid, and won projects&mdash;my biggest was the Dubai Expo. That&rsquo;s where I learned that winning a contract doesn&rsquo;t mean you did everything right, and losing one doesn&rsquo;t mean you did everything wrong. I also learned that eventually, a lack of passion either exceeds your raw talent or erodes it until you&rsquo;re less capable to the organization and less desirable to yourself. On the bright side, I met my wife there. On the other side, I worked myself into utter exhaustion.</p>
+          </div>
+        </div>
+
+        <!-- Exchange 10: The Ranch -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>Outside of work, what do you care most about in life?</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>My horses Stevie, Raz, Dreamer, Sahara, and Frodo. My dogs Oreo and Angel. My dogs Pita, Tabouleh, and Rose. Eight chickens. The land. And my best friend and wife, Chloe.</p>
+          </div>
+          <div class="chat-gallery">
+            <a href="https://www.instagram.com/threespiritranch/" target="_blank" rel="noopener" class="chat-store-link">
+              <img src="ranch-logo.png" alt="Three Spirit Ranch" class="chat-store-link__logo">
+              <span class="chat-store-link__text">
+                <strong>@threespiritranch</strong>
+                <small>instagram.com</small>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Exchange 11: Support the ranch -->
+        <div class="chat-exchange">
+          <div class="chat-prompt">
+            <span class="chat-prompt__icon">&gt;_</span>
+            <p>Wow this is amazing. I bet horses aren&rsquo;t cheap. How can I support?</p>
+          </div>
+          <div class="chat-thinking">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-response">
+            <p>Thanks for asking, you can check out our store here:</p>
+            <a href="https://www.nightwinggoods.com/collections/all" target="_blank" rel="noopener" class="chat-store-link">
+              <span class="chat-store-link__logo chat-store-link__logo--text">NW</span>
+              <span class="chat-store-link__text">
+                <strong>Nightwing Goods</strong>
+                <small>nightwinggoods.com</small>
+              </span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ===== SPLIT-FLAP AIRPORT BOARD =====
+    function initSplitFlapRows() {
+      document.querySelectorAll('.flap-row').forEach(row => {
+        const text = row.dataset.text;
+        if (!text) return;
+        for (let i = 0; i < text.length; i++) {
+          const span = document.createElement('span');
+          if (text[i] === ' ') {
+            span.className = 'flap-char is-space';
+            span.textContent = '';
+          } else {
+            span.className = 'flap-char';
+            span.textContent = text[i];
+            span.dataset.target = text[i];
+          }
+          row.appendChild(span);
+        }
+      });
+    }
+    initSplitFlapRows();
+
+    function startSplitFlap(container) {
+      const rows = container.querySelectorAll('.flap-row');
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/&';
+
+      rows.forEach((row, rowIdx) => {
+        const cells = row.querySelectorAll('.flap-char:not(.is-space)');
+        cells.forEach((cell, charIdx) => {
+          const target = cell.dataset.target || '';
+          let count = 0;
+          const maxFlicks = 6 + Math.floor(Math.random() * 8);
+          const delay = rowIdx * 280 + charIdx * 25;
+
+          cell.textContent = ' ';
+
+          setTimeout(() => {
+            const tick = setInterval(() => {
+              if (count >= maxFlicks) {
+                cell.textContent = target;
+                clearInterval(tick);
+                return;
+              }
+              cell.textContent = alphabet[Math.floor(Math.random() * alphabet.length)];
+              count++;
+            }, 45);
+          }, delay);
+        });
+      });
+    }
+
+    // ===== CHAT EXCHANGE ANIMATION =====
+    function animateChatExchange(el) {
+      const prompt = el.querySelector('.chat-prompt');
+      const thinking = el.querySelector('.chat-thinking');
+      const response = el.querySelector('.chat-response');
+      const splitFlap = el.querySelector('.split-flap');
+      const responseCont = el.querySelector('.chat-response-cont');
+      const specs = el.querySelector('.chat-specs');
+
+      const tl = gsap.timeline();
+
+      tl.to(prompt, { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' });
+      tl.to(thinking, { opacity: 1, duration: 0.25 }, '+=0.25');
+      tl.call(() => thinking.classList.add('is-animating'));
+      tl.to(thinking, { opacity: 0, duration: 0.2 }, '+=0.9');
+      tl.call(() => thinking.classList.remove('is-animating'));
+
+      if (response) {
+        tl.to(response, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.05');
+      }
+
+      if (splitFlap) {
+        tl.to(splitFlap, { opacity: 1, duration: 0.4 }, '+=0.15');
+        tl.call(() => startSplitFlap(splitFlap));
+        tl.to({}, { duration: 2.2 });
+      }
+
+      if (responseCont) {
+        tl.to(responseCont, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' });
+      }
+
+      if (specs) {
+        tl.to(specs, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '+=0.1');
+      }
+
+      const gallery = el.querySelector('.chat-gallery');
+      if (gallery) {
+        tl.to(gallery, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '+=0.15');
+      }
+
+      return tl;
+    }
+
+
+    // ===== INITIALIZE: Hide elements via JS, then animate on scroll =====
+    gsap.set('.chat-prompt', { opacity: 0, x: -20 });
+    gsap.set('.chat-thinking', { opacity: 0 });
+    gsap.set('.chat-response', { opacity: 0, y: 16 });
+    gsap.set('.chat-response-cont', { opacity: 0, y: 16 });
+    gsap.set('.split-flap', { opacity: 0 });
+    gsap.set('.chat-specs', { opacity: 0, y: 16 });
+    gsap.set('.chat-gallery', { opacity: 0, y: 20 });
+
+    // Register scroll triggers for each exchange
+    document.querySelectorAll('.chat-exchange').forEach(el => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 82%',
+        once: true,
+        onEnter: () => animateChatExchange(el)
+      });
+    });
+
+    setTimeout(() => ScrollTrigger.refresh(), 100);
+  </script>
+</body>
+</html>
