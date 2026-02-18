@@ -221,10 +221,9 @@
     }
 
     .chat-response p {
-      font-family: var(--mono);
-      font-size: clamp(12px, 1.3vw, 15px);
-      line-height: 1.65;
-      letter-spacing: 0.02em;
+      font-family: var(--serif);
+      font-size: clamp(16px, 1.8vw, 21px);
+      line-height: 1.75;
       color: var(--dark);
       font-weight: 400;
     }
@@ -248,10 +247,9 @@
     }
 
     .chat-response-cont p {
-      font-family: var(--mono);
-      font-size: clamp(12px, 1.3vw, 15px);
-      line-height: 1.65;
-      letter-spacing: 0.02em;
+      font-family: var(--serif);
+      font-size: clamp(16px, 1.8vw, 21px);
+      line-height: 1.75;
       color: var(--dark);
       font-weight: 400;
     }
@@ -348,7 +346,7 @@
     }
 
     .spec-value {
-      font-family: var(--sans);
+      font-family: var(--serif);
       font-size: clamp(15px, 1.6vw, 18px);
       color: var(--dark);
       line-height: 1.55;
@@ -356,87 +354,26 @@
       opacity: 0.65;
     }
 
-    /* ===== INLINE IMAGE IN CHAT ===== */
-    .chat-response__image {
-      display: block;
-      max-width: 180px;
-      height: auto;
-      margin-top: 20px;
-      border-radius: 50%;
-      border: 1px solid rgba(22, 0, 0, 0.1);
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      :root { --head-h: 3.5rem; }
+      .life-page { padding: calc(var(--head-h) + 48px) 24px 80px; }
+      .head-title { display: none; }
+      .chat-container { gap: 56px; }
+      .chat-prompt { padding: 14px 18px; }
+      .chat-response, .chat-response-cont, .chat-specs { padding-left: 0; }
+      .chat-thinking { padding-left: 0; }
+      .split-flap { margin-left: 0; padding: 16px; }
+      .spec-item { flex-direction: column; gap: 6px; }
+      .spec-label { min-width: auto; }
     }
 
-    /* ===== RANCH INSTAGRAM GALLERY ===== */
+    /* ===== STORE LINK CARDS ===== */
     .chat-gallery {
-      margin-top: 28px;
       padding-left: 42px;
+      margin-top: 20px;
     }
 
-    .chat-gallery__label {
-      font-family: var(--mono);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--primary);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .chat-gallery__label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(22, 0, 0, 0.1);
-    }
-
-    .chat-gallery__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .chat-gallery__grid img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .chat-gallery__grid img:hover {
-      transform: scale(1.03);
-    }
-
-    .chat-gallery__follow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 16px;
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--dark);
-      text-decoration: none;
-      opacity: 0.5;
-      transition: all 0.3s;
-      padding-bottom: 2px;
-      border-bottom: 1px solid transparent;
-    }
-
-    .chat-gallery__follow:hover {
-      opacity: 1;
-      color: var(--primary);
-      border-bottom-color: var(--primary);
-    }
-
-    /* Store link — clickable thumbnail card */
     .chat-store-link {
       display: flex;
       align-items: center;
@@ -444,17 +381,17 @@
       margin-top: 20px;
       padding: 14px 18px;
       background: var(--cream-dim);
-      border: 1px solid rgba(22, 0, 0, 0.08);
+      border: 1px solid rgba(22,0,0,0.08);
       border-radius: 8px;
       text-decoration: none;
       color: var(--dark);
-      transition: all 0.3s;
       max-width: 340px;
+      transition: all 0.3s;
     }
 
     .chat-store-link:hover {
       border-color: var(--primary);
-      box-shadow: 0 2px 12px rgba(244, 12, 63, 0.1);
+      box-shadow: 0 4px 16px rgba(244,12,63,0.1);
     }
 
     .chat-store-link__logo {
@@ -462,7 +399,6 @@
       height: 52px;
       border-radius: 8px;
       object-fit: contain;
-      flex-shrink: 0;
     }
 
     .chat-store-link__logo--text {
@@ -474,44 +410,25 @@
       font-family: var(--mono);
       font-size: 16px;
       font-weight: 700;
-      letter-spacing: 0.05em;
     }
 
     .chat-store-link__text {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
 
     .chat-store-link__text strong {
       font-family: var(--mono);
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--dark);
     }
 
     .chat-store-link__text small {
       font-family: var(--mono);
       font-size: 10px;
-      letter-spacing: 0.08em;
-      color: var(--primary);
-      opacity: 0.7;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      :root { --head-h: 3.5rem; }
-      .life-page { padding: calc(var(--head-h) + 48px) 24px 80px; }
-      .head-title { display: none; }
-      .chat-container { gap: 56px; }
-      .chat-prompt { padding: 14px 18px; }
-      .chat-response, .chat-response-cont, .chat-specs, .chat-gallery { padding-left: 0; }
-      .chat-thinking { padding-left: 0; }
-      .split-flap { margin-left: 0; padding: 16px; }
-      .chat-gallery__grid { grid-template-columns: 1fr; }
-      .spec-item { flex-direction: column; gap: 6px; }
-      .spec-label { min-width: auto; }
+      opacity: 0.5;
+      letter-spacing: 0.05em;
     }
 
     /* ===== GRAIN ===== */
@@ -542,7 +459,7 @@
     <div class="head-title">Life</div>
     <div class="head-socials">
       <a href="https://x.com/faris_says" target="_blank" rel="noopener">X</a>
-      <a href="https://www.linkedin.com/in/farisoweis/" target="_blank" rel="noopener">Li</a>
+      <a href="https://www.linkedin.com/in/farisoweis/" target="_blank" rel="noopener">LI</a>
     </div>
   </header>
 
@@ -553,163 +470,127 @@
 
       <div class="chat-container" id="chatContainer">
 
-        <!-- Exchange 1: The Pitch — Ray Dalio scenario -->
+        <!-- Exchange 1: Philosophy -->
         <div class="chat-exchange">
           <div class="chat-prompt">
             <span class="chat-prompt__icon">&gt;_</span>
-            <p>Imagine Ray Dalio walks up to you. Phase 6 of the decline, everything&rsquo;s shifting, and he goes: &ldquo;We&rsquo;re all good. I&rsquo;m starting something new&mdash;but I need to know what you&rsquo;re really good at. Give me three things.&rdquo;</p>
+            <p>So, Faris, what actually drives you? What are you passionate about?</p>
           </div>
           <div class="chat-thinking">
             <span></span><span></span><span></span>
           </div>
           <div class="chat-response">
-            <p>Okay, well&mdash;I&rsquo;m passionate about finding the easiest ways to create the most amount of transformation.</p>
-            <p>I&rsquo;m definitely bad-ass at creating opportunities that turn blue-sky thinking into plausible movement-making. Ask anybody.</p>
-            <p>And I build bridges. I facilitate the right people with the right process. That&rsquo;s the whole game.</p>
-            <p>Okay, I know you said three&mdash;but one more. I cut beneath the surface in a very pointed but gentle way, which makes it pretty easy to love me.</p>
+            <p>Finding the easiest ways to create the most amount of transformation. Turning blue-sky thinking into plausible movement-making. Building bridges between the right people and the right process.</p>
+            <p>And cutting beneath the surface in a pointed, but gentle way&mdash;people call me the Ted Lasso of Crypto. That's why I founded Crypto Coach. I'm here to integrate, not just advise.</p>
           </div>
         </div>
 
-        <!-- Exchange 2: Ages 18–22 -->
+        <!-- Exchange 2: The Domain -->
         <div class="chat-exchange">
           <div class="chat-prompt">
             <span class="chat-prompt__icon">&gt;_</span>
-            <p>If we randomly met in Italy and I wanted to hear about your life between the ages of 18&ndash;22 over an Aperol Spritz, what would you say?</p>
+            <p>You've been around. What have you been up to for the last decade?</p>
           </div>
           <div class="chat-thinking">
             <span></span><span></span><span></span>
           </div>
           <div class="chat-response">
-            <p>This reminds me of the scene in the Goonies where Chunk, when he&rsquo;s being interrogated by the Fratelli gang, just concedes on all of his life&rsquo;s bad deeds. That&rsquo;s me right now.</p>
-            <p>I had a 1.3 GPA coming out of high school. The only school that accepted me was the University of Hartford. My uncle got me a meeting with the Dean at Virginia Tech and the guy looked me dead in the eye and said I had to get an A in Calculus to transfer. I still don&rsquo;t know why he picked Calculus of all things&mdash;but I didn&rsquo;t question it. I wanted out so badly that I got an A in Calculus after never getting an A in anything to that point in my life.</p>
-            <p>I transferred to Virginia Tech my sophomore year and immediately went right back to not trying. Got academically suspended one year later. The same Dean with the Calculus demand called my Dad to tell him personally. That was a fun dinner.</p>
-            <p>But I bounced back. Got focused. Got a degree. And honestly, that whole stretch&mdash;Hartford to Blacksburg to suspension to finishing&mdash;is probably the thing that taught me the most about what I&rsquo;m actually made of.</p>
+            <p>I've spent the last 10 years as a relentless student of the modern economy. I've integrated with teams across almost every high-stakes segment you can name&hellip;</p>
+          </div>
+          <!-- Split-Flap Airport Board -->
+          <div class="split-flap" id="splitFlap">
+            <div class="flap-row" data-text="L1/L2 INFRASTRUCTURE">
+              <span class="flap-row__number">01</span>
+            </div>
+            <div class="flap-row" data-text="AI AGENTS">
+              <span class="flap-row__number">02</span>
+            </div>
+            <div class="flap-row" data-text="COMPUTE ORCHESTRATION">
+              <span class="flap-row__number">03</span>
+            </div>
+            <div class="flap-row" data-text="DECENTRALIZED ENERGY">
+              <span class="flap-row__number">04</span>
+            </div>
+            <div class="flap-row" data-text="PAYMENTS &amp; REMITTANCE">
+              <span class="flap-row__number">05</span>
+            </div>
+          </div>
+          <div class="chat-response-cont">
+            <p>I've seen it from the inside of Venture and from the grit of the GTM trenches. I don't just watch these industries; I operationalize them.</p>
           </div>
         </div>
 
-        <!-- Exchange 3: The Jobs — going even further back -->
+        <!-- Exchange 3: The Origin -->
         <div class="chat-exchange">
           <div class="chat-prompt">
             <span class="chat-prompt__icon">&gt;_</span>
-            <p>Okay wow, let&rsquo;s go even further back. What were you doing before all of that?</p>
+            <p>Was it always high-tech infrastructure? Where did the &ldquo;Coach&rdquo; start?</p>
           </div>
           <div class="chat-thinking">
             <span></span><span></span><span></span>
           </div>
           <div class="chat-response">
-            <p>Sure thing. As a kid, I had what seems like 20 jobs before I even graduated from Virginia Tech. I was a retail associate at Sears, the register person at Dairy Queen, a busboy at a pub, a reseller of illegally purchased beer with markup, a night shift employee at Subway, a camp counselor for 2nd graders, a landscaper for the town of Blacksburg, Virginia, a baker at Texas Roadhouse, a professional survey taker, pit boss for an illegal gambling operation, and&mdash;not sure what to call it&mdash;the person who puts forks in a box for dining sets sold at department stores.</p>
+            <p>If we met in Italy over an Aperol Spritz and you asked for the truth without the word &ldquo;crypto,&rdquo; I'd tell you I started as a bootlegger and a Subway sandwich artist. I had a 1.3 GPA. I was the guy putting forks in boxes for dining sets.</p>
+            <p>I got an A in Calculus just to prove a point to a Dean at Virginia Tech, only to get academically suspended a year later when I stopped trying. From trading area codes at Yahoo like an NFL GM to winning mega-infrastructure bids for the Dubai Expo, my path hasn't been linear. It's been about curiosity and the hustle required to find the &ldquo;market truth.&rdquo;</p>
           </div>
         </div>
 
-        <!-- Exchange 4: The Flaws -->
+        <!-- Exchange 4: The Personal -->
         <div class="chat-exchange">
           <div class="chat-prompt">
             <span class="chat-prompt__icon">&gt;_</span>
-            <p>What did you tell your wife your biggest flaws were before you got married, just so she was aware before the big I do?</p>
+            <p>Alright, give us some non-work facts. Tell me just random stuff about you?</p>
           </div>
           <div class="chat-thinking">
             <span></span><span></span><span></span>
           </div>
           <div class="chat-response">
-            <p>IKEA furniture scares me. I was extremely cheap until the age of 33. And I cheated on my driving exam, which is why sometimes I go through red lights even until this day, and struggle in terms of depth perception when the GPS is telling me to make a turn in 200 feet.</p>
+            <p class="chat-response__label">The &ldquo;Unfiltered&rdquo; Specs:</p>
+          </div>
+          <div class="chat-specs">
+            <div class="spec-item">
+              <span class="spec-label">The Doppelg&auml;nger</span>
+              <span class="spec-value">Oscar Isaac.</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">The Flaw</span>
+              <span class="spec-value">IKEA furniture is my greatest fear.</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">The Driving Record</span>
+              <span class="spec-value">I cheated on my exam, so red lights are mostly &ldquo;suggestions&rdquo; to me.</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">The Reputation</span>
+              <span class="spec-value">My wife says I've never met a stranger.</span>
+            </div>
           </div>
         </div>
 
-        <!-- Exchange 5: The Compliment -->
+        <!-- Exchange 10: Three Spirit Ranch -->
         <div class="chat-exchange">
           <div class="chat-prompt">
             <span class="chat-prompt__icon">&gt;_</span>
-            <p>What&rsquo;s the biggest compliment you&rsquo;ve ever received?</p>
+            <p>That&rsquo;s awesome. Where can I follow along with your ranch life?</p>
           </div>
           <div class="chat-thinking">
             <span></span><span></span><span></span>
           </div>
           <div class="chat-response">
-            <p>&ldquo;You&rsquo;ve never met a stranger.&rdquo; &mdash; my wife.</p>
+            <p>You can follow us on Instagram:</p>
+            <div class="chat-gallery">
+              <a href="https://www.instagram.com/threespiritranch/" target="_blank" rel="noopener" class="chat-store-link">
+                <img src="ranch-logo.png" alt="Three Spirit Ranch" class="chat-store-link__logo">
+                <span class="chat-store-link__text">
+                  <strong>@threespiritranch</strong>
+                  <small>instagram.com</small>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
 
-        <!-- Exchange 6: Ted Lasso -->
-        <div class="chat-exchange">
-          <div class="chat-prompt">
-            <span class="chat-prompt__icon">&gt;_</span>
-            <p>What TV character do you wish was a real person?</p>
-          </div>
-          <div class="chat-thinking">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="chat-response">
-            <p>Ted Lasso. I loved him so much that I invoked his energy to the point where people called me the Ted Lasso of crypto, and I created an entire brand around it for my previous agency.</p>
-          </div>
-        </div>
-
-        <!-- Exchange 7: The Doppelgänger -->
-        <div class="chat-exchange">
-          <div class="chat-prompt">
-            <span class="chat-prompt__icon">&gt;_</span>
-            <p>Who would you say your doppelg&auml;nger is?</p>
-          </div>
-          <div class="chat-thinking">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="chat-response">
-            <p>In my early 20s, I got a lot of Ben Affleck. In my late 20s, I got a lot of Ben Stiller. In my 30s, and to this day, I get a lot of Oscar Isaac. On occasion, I get Mohamed Salah of Arsenal, which I resent as we are Aston Villa fans.</p>
-          </div>
-        </div>
-
-        <!-- Exchange 8: The Industries -->
-        <div class="chat-exchange">
-          <div class="chat-prompt">
-            <span class="chat-prompt__icon">&gt;_</span>
-            <p>How many industries have you touched in your career?</p>
-          </div>
-          <div class="chat-thinking">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="chat-response">
-            <p>Excluding everything I did before the age of 20, to avoid this being a novel: civil engineering at CH2M, now Jacobs, defense and national security for a State Department contractor, online advertising at Yahoo, financial advisor&mdash;even got a Series 7 and 63&mdash;and just in crypto alone: data management, compute, NFTs, all of DeFi including money markets, options, perps, lending, and prediction markets, Layer 1 infrastructure, Layer 2 infrastructure, middleware, oracles, payments, privacy, and a graveyard of consumer apps.</p>
-          </div>
-        </div>
-
-        <!-- Exchange 9: Yahoo & CH2M -->
-        <div class="chat-exchange">
-          <div class="chat-prompt">
-            <span class="chat-prompt__icon">&gt;_</span>
-            <p>Interesting, tell me more about Yahoo and CH2M.</p>
-          </div>
-          <div class="chat-thinking">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="chat-response">
-            <p>Yahoo was my first real career. HotJobs, selling to recruiters across the country. I had a boss who inspired us every day&mdash;the kind of leader who made you perform beyond your own skill level. That&rsquo;s where I learned that doing little things consistently matters just as much as doing something big once. I wanted to make more money and working the same geographies wasn&rsquo;t going to cut it, so like an NFL GM I started trading. I swapped most of my area codes in major metros&mdash;New York, Chicago&mdash;for a larger volume in secondary markets like Milwaukee and Providence. Doubled my earnings the next quarter. I was also so bad administratively that my boss had to do my paperwork just so he wouldn&rsquo;t look bad.</p>
-            <p>CH2M was mega-infrastructure across the Middle East. I positioned, bid, and won projects&mdash;my biggest was the Dubai Expo. That&rsquo;s where I learned that winning a contract doesn&rsquo;t mean you did everything right, and losing one doesn&rsquo;t mean you did everything wrong. I also learned that eventually, a lack of passion either exceeds your raw talent or erodes it until you&rsquo;re less capable to the organization and less desirable to yourself. On the bright side, I met my wife there. On the other side, I worked myself into utter exhaustion.</p>
-          </div>
-        </div>
-
-        <!-- Exchange 10: The Ranch -->
-        <div class="chat-exchange">
-          <div class="chat-prompt">
-            <span class="chat-prompt__icon">&gt;_</span>
-            <p>Outside of work, what do you care most about in life?</p>
-          </div>
-          <div class="chat-thinking">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="chat-response">
-            <p>My horses Stevie, Raz, Dreamer, Sahara, and Frodo. My dogs Oreo and Angel. My dogs Pita, Tabouleh, and Rose. Eight chickens. The land. And my best friend and wife, Chloe.</p>
-          </div>
-          <div class="chat-gallery">
-            <a href="https://www.instagram.com/threespiritranch/" target="_blank" rel="noopener" class="chat-store-link">
-              <img src="ranch-logo.png" alt="Three Spirit Ranch" class="chat-store-link__logo">
-              <span class="chat-store-link__text">
-                <strong>@threespiritranch</strong>
-                <small>instagram.com</small>
-              </span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Exchange 11: Support the ranch -->
+        <!-- Exchange 11: Nightwing Goods -->
         <div class="chat-exchange">
           <div class="chat-prompt">
             <span class="chat-prompt__icon">&gt;_</span>
@@ -825,14 +706,8 @@
         tl.to(specs, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '+=0.1');
       }
 
-      const gallery = el.querySelector('.chat-gallery');
-      if (gallery) {
-        tl.to(gallery, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '+=0.15');
-      }
-
       return tl;
     }
-
 
     // ===== INITIALIZE: Hide elements via JS, then animate on scroll =====
     gsap.set('.chat-prompt', { opacity: 0, x: -20 });
@@ -841,7 +716,6 @@
     gsap.set('.chat-response-cont', { opacity: 0, y: 16 });
     gsap.set('.split-flap', { opacity: 0 });
     gsap.set('.chat-specs', { opacity: 0, y: 16 });
-    gsap.set('.chat-gallery', { opacity: 0, y: 20 });
 
     // Register scroll triggers for each exchange
     document.querySelectorAll('.chat-exchange').forEach(el => {
