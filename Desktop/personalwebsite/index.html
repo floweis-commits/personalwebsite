@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FO — Faris Oweis</title>
-  <meta name="description" content="GTM + Growth for the Industrial Economy. Compute · Infrastructure · Coordination.">
+  <meta name="description" content="Investing, curating, and growing deep tech.">
 
   <!-- Open Graph — link preview -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="FO — Faris Oweis">
-  <meta property="og:description" content="GTM + Growth for the Industrial Economy. Compute · Infrastructure · Coordination.">
+  <meta property="og:description" content="Investing, curating, and growing deep tech.">
   <meta property="og:image" content="https://oweis.xyz/faris-hero.png.png">
   <meta property="og:url" content="https://oweis.xyz">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FO — Faris Oweis">
-  <meta name="twitter:description" content="GTM + Growth for the Industrial Economy. Compute · Infrastructure · Coordination.">
+  <meta name="twitter:description" content="Investing, curating, and growing deep tech.">
   <meta name="twitter:image" content="https://oweis.xyz/faris-hero.png.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -330,64 +330,6 @@
       fill: var(--primary);
     }
 
-    .hero-info {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 0;
-      right: 0;
-      z-index: 5;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 clamp(24px, 4vw, 64px);
-      pointer-events: none;
-    }
-
-    .hero-subtitle {
-      font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
-      font-size: clamp(14px, 1.5vw, 20px);
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--dark);
-      letter-spacing: 0.02em;
-      line-height: 1.15;
-      max-width: 260px;
-      text-align: left;
-      opacity: 0;
-    }
-
-    .hero-subtitle .hero-char {
-      display: inline;
-    }
-
-    .hero-subtitle .hero-char--space {
-      display: inline;
-      letter-spacing: 0.15em;
-    }
-
-    .hero-tagline {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 4px;
-    }
-
-    .hero-tagline-word {
-      font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
-      font-size: clamp(13px, 1.4vw, 19px);
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--dark);
-      letter-spacing: 0.02em;
-      line-height: 1.15;
-      opacity: 0;
-    }
-
-    .hero-tagline-word .hero-char {
-      display: inline;
-    }
-
     /* ===== BINARY SEPARATOR ===== */
     .sep {
       padding: 8px 48px;
@@ -480,6 +422,48 @@
       color: var(--cream);
       border-bottom-color: var(--cream);
     }
+
+    /* ===== BUILDING — INVEST / CURATE / GROW ===== */
+    .building-section {
+      background:
+        linear-gradient(rgba(22,0,0,0.82), rgba(22,0,0,0.9)),
+        url('work-landscape.jpg') center / cover no-repeat,
+        var(--dark);
+    }
+
+    .building-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 72px;
+    }
+
+    .pillar {
+      display: flex; flex-direction: column;
+      color: var(--cream);
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,240,235,0.15);
+    }
+
+    .pillar__word {
+      font-family: 'Impact', 'Haettenschweiler', sans-serif;
+      font-size: clamp(48px, 7vw, 90px);
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .pillar__desc {
+      font-family: var(--sans);
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.6;
+      color: var(--cream);
+      opacity: 0.75;
+      margin-top: 20px;
+      max-width: 30ch;
+    }
+
+    .pillar .about-link { align-self: flex-start; margin-top: auto; }
+    .pillar__desc { margin-bottom: 32px; }
 
     /* ===== STATS ROW — UP AND TO THE RIGHT ===== */
     .stats-section {
@@ -1079,6 +1063,7 @@
       .head-console, .head-status { display: none; }
       .head-nav a { padding: 0 16px; font-size: 10px; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .building-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 48px; }
       .stats-row { flex-wrap: wrap; }
       .stat { flex: 0 0 50%; }
       /* Stats staircase handled by JS animation */
@@ -1089,9 +1074,6 @@
 
       .hero-title { font-size: clamp(56px, 13vw, 140px); }
       .hero-portrait { width: clamp(280px, 60vw, 440px); top: 0; }
-      .hero-info { padding: 0 20px; }
-      .hero-subtitle { max-width: 130px; font-size: clamp(10px, 1.3vw, 14px); }
-      .hero-tagline-word { font-size: clamp(10px, 1.2vw, 14px); }
 
       .testimonial-slide { flex-direction: column; align-items: center; text-align: center; }
       .testimonial__quote { padding-left: 0; }
@@ -1107,16 +1089,13 @@
     }
 
     @media (max-width: 480px) {
+      .head-nav a { padding: 0 10px; font-size: 9px; }
       .stats-row { flex-direction: column; align-items: stretch; }
       .stat { flex: none; transform: none !important; border-bottom: 1px solid rgba(255,240,235,0.08); }
       .site-intro__logo { width: 60vw; height: 60vw; }
       .portfolio-grid { grid-template-columns: 1fr; }
       .hero-title { font-size: clamp(42px, 14vw, 90px); }
       .hero-portrait { width: 70vw; top: 2vw; }
-      .hero-info { position: relative; top: auto; transform: none; flex-direction: column; align-items: center; gap: 12px; margin-top: 16px; }
-      .hero-subtitle { max-width: none; text-align: center; }
-      .hero-tagline { flex-direction: row; gap: 12px; }
-      .hero-tagline-word { font-size: 12px; }
     }
 
     /* ===== NOSCRIPT / FALLBACK ===== */
@@ -1167,6 +1146,7 @@
     <nav class="head-nav">
       <a href="#about">About</a>
       <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
       <a href="life.html">Life</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -1198,20 +1178,6 @@
         </div>
       </div>
 
-      <div class="hero-info">
-        <div class="hero-subtitle" id="heroSubtitle">
-          <div><span class="hero-char" data-char="G">G</span><span class="hero-char" data-char="T">T</span><span class="hero-char" data-char="M">M</span><span class="hero-char hero-char--space">&nbsp;</span><span class="hero-char" data-char="+">+</span><span class="hero-char hero-char--space">&nbsp;</span><span class="hero-char" data-char="G">G</span><span class="hero-char" data-char="R">R</span><span class="hero-char" data-char="O">O</span><span class="hero-char" data-char="W">W</span><span class="hero-char" data-char="T">T</span><span class="hero-char" data-char="H">H</span></div>
-          <div><span class="hero-char" data-char="F">F</span><span class="hero-char" data-char="O">O</span><span class="hero-char" data-char="R">R</span> <span class="hero-char" data-char="T">T</span><span class="hero-char" data-char="H">H</span><span class="hero-char" data-char="E">E</span></div>
-          <div><span class="hero-char" data-char="I">I</span><span class="hero-char" data-char="N">N</span><span class="hero-char" data-char="D">D</span><span class="hero-char" data-char="U">U</span><span class="hero-char" data-char="S">S</span><span class="hero-char" data-char="T">T</span><span class="hero-char" data-char="R">R</span><span class="hero-char" data-char="I">I</span><span class="hero-char" data-char="A">A</span><span class="hero-char" data-char="L">L</span></div>
-          <div><span class="hero-char" data-char="E">E</span><span class="hero-char" data-char="C">C</span><span class="hero-char" data-char="O">O</span><span class="hero-char" data-char="N">N</span><span class="hero-char" data-char="O">O</span><span class="hero-char" data-char="M">M</span><span class="hero-char" data-char="Y">Y</span></div>
-        </div>
-        <div class="hero-tagline" id="heroTagline">
-          <span class="hero-tagline-word" id="tagCompute"><span class="hero-char" data-char="C">C</span><span class="hero-char" data-char="O">O</span><span class="hero-char" data-char="M">M</span><span class="hero-char" data-char="P">P</span><span class="hero-char" data-char="U">U</span><span class="hero-char" data-char="T">T</span><span class="hero-char" data-char="E">E</span></span>
-          <span class="hero-tagline-word" id="tagInfra"><span class="hero-char" data-char="I">I</span><span class="hero-char" data-char="N">N</span><span class="hero-char" data-char="F">F</span><span class="hero-char" data-char="R">R</span><span class="hero-char" data-char="A">A</span><span class="hero-char" data-char="S">S</span><span class="hero-char" data-char="T">T</span><span class="hero-char" data-char="R">R</span><span class="hero-char" data-char="U">U</span><span class="hero-char" data-char="C">C</span><span class="hero-char" data-char="T">T</span><span class="hero-char" data-char="U">U</span><span class="hero-char" data-char="R">R</span><span class="hero-char" data-char="E">E</span></span>
-          <span class="hero-tagline-word" id="tagCoord"><span class="hero-char" data-char="C">C</span><span class="hero-char" data-char="O">O</span><span class="hero-char" data-char="O">O</span><span class="hero-char" data-char="R">R</span><span class="hero-char" data-char="D">D</span><span class="hero-char" data-char="I">I</span><span class="hero-char" data-char="N">N</span><span class="hero-char" data-char="A">A</span><span class="hero-char" data-char="T">T</span><span class="hero-char" data-char="I">I</span><span class="hero-char" data-char="O">O</span><span class="hero-char" data-char="N">N</span></span>
-        </div>
-      </div>
-
       <div class="hero-sep" id="heroSepBottom"></div>
     </div>
   </section>
@@ -1237,6 +1203,34 @@
 
   <!-- SEP -->
   <div class="sep" id="sep2"></div>
+
+  <!-- ===== INVEST / CURATE / GROW ===== -->
+  <section class="section section--dark building-section" id="work">
+    <div class="section__container">
+      <div class="section__label section__label--primary">Work</div>
+      <div class="about-heading">What I&rsquo;m building.</div>
+      <div class="building-grid">
+        <div class="pillar">
+          <div class="pillar__word">INVEST</div>
+          <p class="pillar__desc">Deploying capital at Series A and beyond across deep tech.</p>
+          <a href="https://www.dollarbull.com/" class="about-link" target="_blank" rel="noopener">Explore &rarr;</a>
+        </div>
+        <div class="pillar">
+          <div class="pillar__word">CURATE</div>
+          <p class="pillar__desc">Bespoke gatherings for the founders and leaders shaping capital, culture, and American dynamism.</p>
+          <a href="https://57maiden.com/" class="about-link" target="_blank" rel="noopener">Explore &rarr;</a>
+        </div>
+        <div class="pillar">
+          <div class="pillar__word">GROW</div>
+          <p class="pillar__desc">Working alongside earlier-stage deep tech solutions, generating revenue and customers across our industrial family offices&rsquo; operating footprint.</p>
+          <a href="https://www.forgeindustrial.xyz/" class="about-link" target="_blank" rel="noopener">Explore &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEP -->
+  <div class="sep" id="sep2b"></div>
 
   <!-- ===== STATS ===== -->
   <section class="section section--dark stats-section" id="stats">
@@ -1271,7 +1265,7 @@
   <div class="sep" id="sep3"></div>
 
   <!-- ===== WORK — PORTFOLIO GRID ===== -->
-  <section class="section section--light" id="work">
+  <section class="section section--light" id="projects">
     <div class="section__container">
       <div class="section__label section__label--primary">Featured Projects</div>
       <div class="portfolio-wrap">
@@ -1671,40 +1665,6 @@
         requestAnimationFrame(tick);
       });
 
-      // Subtitle + tagline chars — same timing as title
-      const sub = document.getElementById('heroSubtitle');
-      sub.style.opacity = '1';
-      const subChars = sub.querySelectorAll('.hero-char:not(.hero-char--space)');
-      subChars.forEach((el, i) => {
-        const target = el.dataset.char;
-        if (!target) return;
-        const settleAt = 500 + i * 130 + Math.random() * 150;
-        let lastFlip = 0;
-        function tick(now) {
-          const elapsed = now - startTime;
-          if (elapsed >= settleAt) { el.textContent = target; return; }
-          if (now - lastFlip > 45) { el.textContent = pool[Math.floor(Math.random() * pool.length)]; lastFlip = now; }
-          requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      });
-
-      document.querySelectorAll('.hero-tagline-word').forEach(word => {
-        word.style.opacity = '1';
-        word.querySelectorAll('.hero-char').forEach((el, i) => {
-          const target = el.dataset.char;
-          if (!target) return;
-          const settleAt = 500 + i * 130 + Math.random() * 150;
-          let lastFlip = 0;
-          function tick(now) {
-            const elapsed = now - startTime;
-            if (elapsed >= settleAt) { el.textContent = target; return; }
-            if (now - lastFlip > 45) { el.textContent = pool[Math.floor(Math.random() * pool.length)]; lastFlip = now; }
-            requestAnimationFrame(tick);
-          }
-          requestAnimationFrame(tick);
-        });
-      });
     }
 
     // ===== TYPEWRITER EFFECT FOR HERO TEXT =====
@@ -1846,13 +1806,22 @@
       });
 
       // About section fade-in
-      gsap.from('.about-heading', {
+      gsap.from('#about .about-heading', {
         scrollTrigger: { trigger: '#about', start: 'top 75%' },
         y: 30, opacity: 0, duration: 0.8, ease: 'power2.out'
       });
-      gsap.from('.about-text, .about-link', {
+      gsap.from('#about .about-text, #about .about-link', {
         scrollTrigger: { trigger: '#about', start: 'top 70%' },
         y: 20, opacity: 0, stagger: 0.15, duration: 0.8, ease: 'power2.out'
+      });
+
+      gsap.from('#work .about-heading', {
+        scrollTrigger: { trigger: '#work', start: 'top 75%' },
+        y: 30, opacity: 0, duration: 0.8, ease: 'power2.out'
+      });
+      gsap.from('#work .pillar', {
+        scrollTrigger: { trigger: '#work', start: 'top 60%' },
+        y: 30, opacity: 0, stagger: 0.15, duration: 0.8, ease: 'power2.out'
       });
 
       // Stats: animate staircase + counters + chart line all together
